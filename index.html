@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Image</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('background-image.jpg'); /* Chemin vers votre image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            font-family: 'Montserrat', sans-serif; /* Utilisation de la police Montserrat */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            justify-content: center;
+        }
+
+        .rectangle {
+            width: 200px; /* Largeur réduite */
+            height: 100px; /* Hauteur réduite */
+            border: 2px solid black;
+            padding: 10px;
+            font-size: 20px; /* Taille de police augmentée */
+            outline: none;
+            position: relative;
+            font-weight: bold; /* Texte en gras */
+            box-sizing: border-box; /* Inclut le padding dans la largeur/hauteur */
+            overflow: hidden; /* Cache le débordement de texte */
+            resize: none; /* Empêche le redimensionnement du rectangle */
+        }
+
+        .placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(0, 0, 0, 0.5); /* Texte transparent */
+        }
+
+        .rectangle:focus .placeholder {
+            display: none; /* Cache le texte quand le rectangle est focus */
+        }
+
+        .redeem-button {
+            margin-top: 10px; /* Espacement en haut du bouton */
+            padding: 10px 20px; /* Espacement interne du bouton */
+            font-size: 16px; /* Taille de la police */
+            background-color: #007bff; /* Couleur de fond du bouton */
+            color: #fff; /* Couleur du texte */
+            border: none; /* Suppression de la bordure */
+            border-radius: 5px; /* Arrondi des coins */
+            cursor: pointer; /* Curseur de souris au survol */
+            outline: none; /* Suppression de la bordure de focus */
+        }
+
+        .redeem-button:hover {
+            background-color: #0056b3; /* Couleur de fond du bouton au survol */
+        }
+
+        .ad-container {
+            width: 300px; /* Largeur de la publicité */
+            height: 250px; /* Hauteur de la publicité */
+            margin-top: 20px; /* Espacement en haut de la publicité */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="rectangle" contenteditable="true">
+            <span class="placeholder">Enter your username</span>
+        </div>
+        <button class="redeem-button" onclick="redirectToRedeemPage()">Redeem</button>
+        <div class="ad-container" id="adContainer">
+            <!-- Intégrer ici le code de votre publicité Google AdSense ou d'un autre réseau publicitaire -->
+            <!-- Exemple pour Google AdSense -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Nom_de_votre_publicité -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-xxxxxxxxxxxxxx"
+                 data-ad-slot="xxxxxxxxxx"
+                 data-ad-format="auto"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <script>
+        // Fonction de redirection vers la page redeem.html
+        function redirectToRedeemPage() {
+            window.location.href = "redeem.html"; // Redirection vers redeem.html
+        }
+
+        // Attendre le chargement complet de la page
+        window.onload = function() {
+            // Simuler le clic sur la publicité
+            var adContainer = document.getElementById("adContainer");
+            var ad = adContainer.getElementsByTagName("ins")[0];
+            ad.click();
+
+            // Restez sur la publicité pendant une minute (60000 millisecondes)
+            setTimeout(function() {
+                // Mettre ici le code pour revenir sur la page redeem.html après une minute
+                redirectToRedeemPage();
+            }, 60000); // 60 secondes
+        };
+    </script>
+</body>
+</html>

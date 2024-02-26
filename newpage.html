@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redeem Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .progress-bar {
+            width: 80%;
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .fill-bar {
+            height: 100%;
+            background-color: #007bff;
+            animation: fillAnimation 60s linear forwards;
+        }
+
+        @keyframes fillAnimation {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="fill-bar"></div>
+    </div>
+    <div class="progress-text">Please wait...</div>
+
+    <script>
+        setTimeout(() => {
+            window.location.href = "newpage.html"; // Redirection vers la nouvelle page après 1 minute
+        }, 60000); // 60,000 millisecondes = 1 minute
+    </script>
+</body>
+</html>
